@@ -1,0 +1,20 @@
+["setup.cfg".flake8]
+show-source = true
+
+# Plugins:
+max-line-length = 100
+max-complexity = 6
+
+# darglint:
+docstring-style = "sphinx"
+
+# Violations:
+ignore = "D100, D104, D401, DAR103, DAR203, E800, N802, Q000, RST303, RST304, W504, WPS326"
+extend_ignore = "E203, W503"
+
+["setup.cfg".isort]
+line_length = 100
+
+
+[nitpick.files."setup.cfg"]
+comma_separated_values = ["flake8.ignore"]

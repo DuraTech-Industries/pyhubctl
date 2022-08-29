@@ -1,0 +1,12 @@
+[nitpick.files.absent]
+"Pipfile" = "Use pyproject.toml instead"
+"Pipfile.lock" = "Use pyproject.toml instead"
+
+".isort.cfg" = "Move values to setup.cfg, section [isort]"
+".flake8" = "Move values to setup.cfg, section [flake8]"
+"mypy.ini" = "Move values to setup.cfg, section [mypy]"
+
+[nitpick.files.present]
+"CHANGELOG.rst" = "A project should have `CHANGELOG.rst`"
+"README.rst" = "A project should have `README.rst`"
+".gitignore" = "A project should have `.gitignore` file"

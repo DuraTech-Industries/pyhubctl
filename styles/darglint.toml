@@ -1,0 +1,2 @@
+["setup.cfg".flake8]
+strictness = "long"
