@@ -6,7 +6,7 @@ from typing import Optional, Union
 
 @dataclass
 class Configuration(object):
-    """Configuration object for `PyHubCtl`."""
+    """Configuration object for :class:`~PyHubCtl`."""
 
     help: bool = field(default=False)
     """Print `uhubctl` help text."""
@@ -15,25 +15,25 @@ class Configuration(object):
     """Action to off/on/cycle/toggle (or 0/1/2/3) affected ports."""
 
     ports: str = field(default="")
-    """The ports to operate on (default: all ports)."""
+    """The ports to operate on (defaults to all ports)."""
 
     location: str = field(default="")
-    """Limit hub by location (default: all hubs)."""
+    """Limit hub by location (defaults to all hubs)."""
 
     level: str = field(default="")
     """Limit hub by location level (i.e. a-b.c is level 3)."""
 
     vendor: str = field(default="")
-    """Limit hub by vendor id (default: all vendors; partial: ok)."""
+    """Limit hub by vendor id (defaults to all vendors; partial: ok)."""
 
     search: str = field(default="")
     """Limit hub by attached device description."""
 
     delay: int = field(default=2)
-    """Delay for cycle action (default: 2 seconds)."""
+    """Delay for cycle action (defaults to 2 seconds)."""
 
     repeat: int = field(default=1)
-    """Repeat power off count (default: 1).
+    """Repeat power off count (defaults to 1).
 
     Some devices may need this to turn off.
     """
@@ -54,7 +54,7 @@ class Configuration(object):
     """
 
     wait: int = field(default=20)  # noqa: WPS432
-    """Wait before repeating power off (default: 20ms)"""
+    """Wait before repeating power off (defaults to 20ms)"""
 
     version: bool = field(default=False)
     """Print `uhubctl` version."""
@@ -66,8 +66,14 @@ class PyHubCtl(object):
     def run(self, config: Optional[Configuration] = None) -> str:
         """Run `uhubctl` and return its output.
 
+        If `uhubctl` is not installed, a :exc:`~FileNotFoundError` will
+        be raised. If `uhubctl` returns an error, a
+        :exc:`~subprocess.CalledProcessError` will be raised.
+
         Args:
-            config: The arguments to send to `uhubctl`.
+            config: The arguments to send to `uhubctl`. If not provided,
+                `uhubctl` will be executed without any parameters. The
+                result will be what USB hubs the program could locate.
 
         Returns:
             The output from `uhubctl`.
