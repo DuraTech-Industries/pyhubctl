@@ -88,7 +88,7 @@ master_doc = "index"
 
 # General information about the project.
 project = "pyhubctl"
-copyright = "2022, Dakota Horstman"
+copyright = "2022, DuraTech Industries"
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -246,7 +246,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-    ("index", "user_guide.tex", "pyhubctl Documentation", "Dakota Horstman", "manual")
+    ("index", "user_guide.tex", "pyhubctl Documentation", "DuraTech Industries", "manual")
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
