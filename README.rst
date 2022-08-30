@@ -1,46 +1,71 @@
-.. These are examples of badges you might want to add to your README:
-   please update the URLs accordingly
-
-    .. image:: https://api.cirrus-ci.com/github/<USER>/pyhubctl.svg?branch=main
-        :alt: Built Status
-        :target: https://cirrus-ci.com/github/<USER>/pyhubctl
-    .. image:: https://readthedocs.org/projects/pyhubctl/badge/?version=latest
-        :alt: ReadTheDocs
-        :target: https://pyhubctl.readthedocs.io/en/stable/
-    .. image:: https://img.shields.io/coveralls/github/<USER>/pyhubctl/main.svg
-        :alt: Coveralls
-        :target: https://coveralls.io/r/<USER>/pyhubctl
-    .. image:: https://img.shields.io/pypi/v/pyhubctl.svg
-        :alt: PyPI-Server
-        :target: https://pypi.org/project/pyhubctl/
-    .. image:: https://img.shields.io/conda/vn/conda-forge/pyhubctl.svg
-        :alt: Conda-Forge
-        :target: https://anaconda.org/conda-forge/pyhubctl
-    .. image:: https://pepy.tech/badge/pyhubctl/month
-        :alt: Monthly Downloads
-        :target: https://pepy.tech/project/pyhubctl
-    .. image:: https://img.shields.io/twitter/url/http/shields.io.svg?style=social&label=Twitter
-        :alt: Twitter
-        :target: https://twitter.com/pyhubctl
-
 .. image:: https://img.shields.io/badge/-PyScaffold-005CA0?logo=pyscaffold
     :alt: Project generated with PyScaffold
     :target: https://pyscaffold.org/
+.. image:: https://img.shields.io/pypi/v/pyhubctl.svg
+    :alt: PyPI-Server
+    :target: https://pypi.org/project/pyhubctl/
+.. image:: https://img.shields.io/coveralls/github/DuraTech-Industries/pyhubctl/main.svg
+    :alt: Coveralls
+    :target: https://coveralls.io/r/DuraTech-Industries/pyhubctl
 
-|
 
 ========
-pyhubctl
+PyHubCtl
 ========
 
 
     Python wrapper for the uhubctl project.
 
 
-A longer description of your project goes here...
+===========
+Quick Start
+===========
+
+Installation
+------------
+
+`pyhubctl` requires `uhubctl` to be installed and on PATH for your system. Follow the guide provided
+by `uhubctl` here: https://github.com/mvp/uhubctl#compiling
+
+Attempts to run this library without proper installation of `uhubctl` will result in errors being
+thrown.
+
+Install from PyPI::
+
+    pip install pyhubctl
+
+Install from source::
+
+    git clone https://github.com/DuraTech-Industries/pyhubctl.git
+    cd pyhubctl
+    pip install .
 
 
-.. _pyscaffold-notes:
+Quick Start
+-----------
+
+`pyhubctl` has two main classes for use: `PyHubCtl` and `Configuration`. They're both pretty
+self-explanatory, but `PyHubCtl` is what you use to run `uhubctl`, and `Configuration` is what you
+use to configure how `uhubctl` runs.
+
+`Configuration` contains attributes that correspond directly to the arguments `uhubctl` expects.
+Pass an instance of this class to the run method of `PyHubCtl`. This run method will return what
+`uhubctl` outputs, or raise an error if something went wrong.
+
+As an example, here is how you might toggle all of the ports on a USB-hub::
+
+    from pyhubctl import Configuration, PyHubCtl
+
+    phc = PyHubCtl()
+    phc.run(Configuration(location="1-4"))
+
+Or a specific set of ports::
+
+    from pyhubctl import Configuration, PyHubCtl
+
+    phc = PyHubCtl()
+    phc.run(Configuration(location="1-4", ports="3,4"))
+
 
 Making Changes & Contributing
 =============================
@@ -56,12 +81,4 @@ It is a good idea to update the hooks to the latest version::
 
     pre-commit autoupdate
 
-Don't forget to tell your contributors to also install and use pre-commit.
-
 .. _pre-commit: https://pre-commit.com/
-
-Note
-====
-
-This project has been set up using PyScaffold 4.3. For details and usage
-information on PyScaffold see https://pyscaffold.org/.
