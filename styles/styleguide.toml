@@ -6,7 +6,7 @@ max-line-length = 100
 max-complexity = 6
 
 # darglint:
-docstring-style = "sphinx"
+docstring-style = "google"
 
 # Violations:
 ignore = "D100, D104, D401, DAR103, DAR203, E800, N802, Q000, RST303, RST304, W504, WPS326"
